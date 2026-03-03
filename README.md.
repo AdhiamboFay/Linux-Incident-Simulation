@@ -88,14 +88,6 @@ The task is to investigate the system logs, identify the malicious activity, and
 
 ---
 
-## Project Files & Links
-- **Scripts:** [analysis_scripts/](./analysis_scripts)
-- **Sample Logs:** [logs_sample/](./logs_sample)
-- **Incident Report:** [Incident_Report.pdf](./Incident_Report.pdf)
-- **GitHub Repository:** [https://github.com/KimberlyAdhiambo/Linux-Incident-Simulation](#)
-
----
-
 ## Next Steps / Expansion Ideas
 - Integrate Python scripts to automate log parsing.
 - Simulate a network attack and practice packet capture analysis with `tcpdump` or Wireshark.
