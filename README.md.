@@ -1,0 +1,102 @@
+# Linux Incident Simulation
+
+## Project Overview
+This project simulates a Linux server security incident to practice Digital Forensics & Incident Response (DFIR) skills. The main goal is to detect and analyze suspicious activity, identify potential threats, and produce an incident response report demonstrating investigation and remediation skills.
+
+---
+
+## Scenario / Problem
+A Linux server has experienced unusual activity:
+- Multiple failed SSH login attempts from unknown IP addresses
+- Suspicious processes running in the background
+- Unexpected modifications to system files
+
+The task is to investigate the system logs, identify the malicious activity, and provide recommendations to mitigate risks.
+
+---
+
+## Tools & Skills Used
+- **Operating System:** Linux (Ubuntu/Debian)
+- **Commands & Utilities:** `ls`, `ps`, `top`, `netstat`, `ss`, `tcpdump`, `grep`, `tail`
+- **Scripting:** Bash scripting for log analysis
+- **Logging & Forensics:** `/var/log/auth.log`, `/var/log/syslog`, process monitoring
+- **Documentation:** Incident report writing in PDF
+- **Version Control:** Git & GitHub for project organization
+
+---
+
+## Step-by-Step Investigation
+1. **Initial Reconnaissance**
+   - Logged into the Linux server.
+   - Checked active users and login attempts:
+     ```bash
+     last -a
+     who
+     ```
+2. **Check Failed Login Attempts**
+   - Analyzed authentication logs:
+     ```bash
+     grep "Failed password" /var/log/auth.log
+     ```
+   - Identified repeated login attempts from suspicious IPs.
+
+3. **Process Analysis**
+   - Checked running processes:
+     ```bash
+     ps aux --sort=-%cpu
+     top
+     ```
+   - Found a suspicious process consuming high CPU without explanation.
+
+4. **Network Activity**
+   - Monitored open connections:
+     ```bash
+     ss -tuln
+     netstat -plant
+     ```
+   - Noted unusual outbound connections that could indicate data exfiltration.
+
+5. **Log Analysis**
+   - Correlated timestamps in system and authentication logs.
+   - Identified unusual file access and modification patterns.
+
+6. **Remediation Steps**
+   - Disabled suspicious user accounts.
+   - Terminated malicious processes.
+   - Updated SSH configuration: disabled root login, enforced key-based authentication.
+   - Applied software updates and security patches.
+   - Documented all findings in an incident report.
+
+---
+
+## Findings & Results
+- Detected 12 failed SSH login attempts from external IP addresses.
+- Identified a suspicious background process (`malware_sim.sh`) running under a non-root account.
+- Discovered unauthorized changes to system files in `/etc/` directory.
+- Provided actionable recommendations to prevent recurrence:
+  - Stronger SSH policies
+  - Regular log monitoring
+  - Automated alerting for suspicious activity
+
+---
+
+## Outcome / Lessons Learned
+- Practical experience in analyzing Linux system logs.
+- Strengthened skills in DFIR methodology:
+  - Detect → Investigate → Remediate → Document
+- Demonstrated ability to respond to security incidents in a structured and professional manner.
+
+---
+
+## Project Files & Links
+- **Scripts:** [analysis_scripts/](./analysis_scripts)
+- **Sample Logs:** [logs_sample/](./logs_sample)
+- **Incident Report:** [Incident_Report.pdf](./Incident_Report.pdf)
+- **GitHub Repository:** [https://github.com/KimberlyAdhiambo/Linux-Incident-Simulation](#)
+
+---
+
+## Next Steps / Expansion Ideas
+- Integrate Python scripts to automate log parsing.
+- Simulate a network attack and practice packet capture analysis with `tcpdump` or Wireshark.
+- Expand to cloud-based Linux environments using AWS EC2 instances.
